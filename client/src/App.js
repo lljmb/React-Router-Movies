@@ -17,7 +17,7 @@ export default function App () {
         .then(response => {
           // Study this response with a breakpoint or log statements
           // and set the response data as the 'movieList' slice of state
-          setMovieList(response);
+          setMovieList(response.data);
           console.log(response);
         })
         .catch(error => {
@@ -35,11 +35,11 @@ export default function App () {
     <div>
       <SavedList list={[ /* This is stretch */]} />
       <Switch>
-       <Route path={'/movie-list'}>
-        <Movie />
+       <Route path={'/movies/:id'}>
+        <Movie movies={movieList} />
        </Route>
 
-        <Route path={'/'}>
+        <Route exact path={'/'}>
         <MovieList movies={movieList} />
         </Route>
       </Switch>
